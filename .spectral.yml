@@ -1,3 +1,4 @@
+formats: ["oas3"]
 extends: "spectral:oas"
 functions:
   - camara-reserved-words
