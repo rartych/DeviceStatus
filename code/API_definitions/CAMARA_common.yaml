@@ -269,7 +269,7 @@ components:
      example:
       status: 504
       code: UNAVAILABLE
-      message: Request timeout exceeded
+      message: Request timeout exceeded ?
   Timeout:
    description: Timeout
    content:
