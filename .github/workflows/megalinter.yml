@@ -62,6 +62,7 @@ jobs:
           YAML_YAMLLINT_CONFIG_FILE: ".yamllint.yaml"
           JAVA_CHECKSTYLE_CONFIG_FILE: "javalint.xml"
           OPENAPI_SPECTRAL_CONFIG_FILE: ".spectral.yml"
+          YAML_YAMLLINT_FILTER_REGEX_EXCLUDE: "(.github/)"
 
           # Upload MegaLinter artifacts
       - name: Archive production artifacts
