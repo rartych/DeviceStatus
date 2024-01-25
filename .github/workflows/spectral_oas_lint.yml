@@ -35,18 +35,16 @@ jobs:
       - name: Run spectral:oas Spectral Linting
         run: spectral lint code/API_definitions/*.yaml --verbose --ruleset .spectral.yml > spectral.log 2>&1
          # Save Spectral report log file
-      - name: Save Spectral report log
-        if: ${{ success() }} || ${{ failure() }}
-        run: |
-          mkdir -p spectral-report
-          cp spectral.log spectral-report/spectral.log
+ #     - name: Save Spectral report log
+ #       if: ${{ success() }} || ${{ failure() }}
+ #       run: |
+ #         mkdir -p spectral-report
+ #         cp spectral.log spectral-report/spectral.log
       # Upload MegaLinter artifacts
       - name: Archive production artifacts
         if: ${{ success() }} || ${{ failure() }}
         uses: actions/upload-artifact@v4
         with:
           name: Spectral report
-          path: |
-            spectral-report
-            spectral.log
+          path: spectral.log
           
