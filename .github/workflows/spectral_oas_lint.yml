@@ -33,7 +33,8 @@ jobs:
       - name: Install Spectral functions
         run: npm install -g @stoplight/spectral-functions
       - name: Run spectral:oas Spectral Linting
-        run: spectral lint code/API_definitions/*.yaml --verbose --ruleset .spectral.yml | tee spectral.log
+        run: spectral lint code/API_definitions/*.yaml --verbose --ruleset .spectral.yml
+        # | tee spectral.log
          # Save Spectral report log file
  #     - name: Save Spectral report log
  #       if: ${{ success() }} || ${{ failure() }}
