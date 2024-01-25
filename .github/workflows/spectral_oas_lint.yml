@@ -1,5 +1,6 @@
 ---
 # CAMARA Project - workflow configuration to manually run CAMARA OAS rules
+# see https://docs.github.com/en/actions/using-workflows/manually-running-a-workflow
 # 31.01.2024 - initial version
 
 name: Spectral manual run
@@ -32,4 +33,20 @@ jobs:
       - name: Install Spectral functions
         run: npm install -g @stoplight/spectral-functions
       - name: Run spectral:oas Spectral Linting
-        run: spectral lint code/API_definitions/*.yaml --verbose --ruleset .spectral.yml
+        run: spectral lint code/API_definitions/*.yaml --verbose --ruleset .spectral.yml > spectral.log 2>&1
+         # Save Spectral report log file
+      - name: Save Spectral report log
+        if: ${{ success() }} || ${{ failure() }}
+        run: |
+          mkdir -p spectral-report
+          cp spectral.log spectral-report/spectral.log
+      # Upload MegaLinter artifacts
+      - name: Archive production artifacts
+        if: ${{ success() }} || ${{ failure() }}
+        uses: actions/upload-artifact@v3
+        with:
+          name: Spectral report
+          path: |
+            spectral-report
+            spectral.log
+          
