@@ -32,20 +32,5 @@ jobs:
         run: npm install -g @stoplight/spectral
       - name: Install Spectral functions
         run: npm install -g @stoplight/spectral-functions
-      - name: Run spectral:oas Spectral Linting
+      - name: Run Spectral linting
         run: spectral lint code/API_definitions/*.yaml --verbose --ruleset .spectral.yml
-        # | tee spectral.log
-         # Save Spectral report log file
- #     - name: Save Spectral report log
- #       if: ${{ success() }} || ${{ failure() }}
- #       run: |
- #         mkdir -p spectral-report
- #         cp spectral.log spectral-report/spectral.log
-      # Upload MegaLinter artifacts
-      - name: Archive production artifacts
-        if: ${{ success() }} || ${{ failure() }}
-        uses: actions/upload-artifact@v4
-        with:
-          name: Spectral report
-          path: spectral.log
-          
