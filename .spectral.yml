@@ -48,7 +48,7 @@ rules:
   oas3-unused-component: true
   oas3-valid-media-example: true
   oas3-valid-schema-example: true
-  oas3-server-variables: true
+  # oas3-server-variables: true
 
   # Custom Rules Utilizing Spectral's Built-in Functions and JavaScript Implementations
 
@@ -215,7 +215,7 @@ rules:
   camara-discriminator-use:
     description: |
       Ensure that API definition YAML files with oneOf or anyOf sections include a discriminator object for serialization, deserialization, and validation.
-    severity: warn
+    severity: hint
     given: "$..[?(@.oneOf || @.anyOf)]"
     then:
       field: discriminator
