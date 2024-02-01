@@ -7,7 +7,6 @@ info:
       - Connectivity Status
 
     Moreover, this API extends the functionality by allowing users customers to subscribe to events associated with these status queries.
-
     # Introduction
 
     ## Roaming Status
