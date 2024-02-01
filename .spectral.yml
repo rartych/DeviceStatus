@@ -1,7 +1,8 @@
 # CAMARA Project - linting ruleset - documentation avaialable here:
 # https://github.com/camaraproject/Commonalities/blob/main/documentation/Linting-rules.md
 # 31.01.2024 - initial version
-extends: [[spectral:oas, all]]
+
+extends: "spectral:oas"
 functions:
   - camara-reserved-words
   - camara-language-avoid-telco
@@ -214,7 +215,7 @@ rules:
   camara-discriminator-use:
     description: |
       Ensure that API definition YAML files with oneOf or anyOf sections include a discriminator object for serialization, deserialization, and validation.
-    severity: warn
+    severity: hint
     given: "$..[?(@.oneOf || @.anyOf)]"
     then:
       field: discriminator
